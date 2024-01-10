@@ -4,4 +4,5 @@ export interface IPoolModel {
     readonly apr: number
     readonly extra_apr: number
     readonly type: string
+    readonly app: string
 }

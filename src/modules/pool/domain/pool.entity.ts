@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm'
 import { IPoolModel } from './pool.model'
 
 @Entity('pools')
+@Unique("pool_app", ["type", "app"]) 
 export class Pool implements IPoolModel {
     @PrimaryGeneratedColumn()
     id: number
@@ -12,6 +13,12 @@ export class Pool implements IPoolModel {
         unique: true,
     })
     type: string
+
+    @Column({
+        type: 'varchar',
+        nullable: true,
+    })
+    app: string
 
     @Column({
         type: 'numeric',
